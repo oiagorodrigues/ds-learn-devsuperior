@@ -2,7 +2,6 @@ package dev.iagorodrigues.dslearn.dto;
 
 import dev.iagorodrigues.dslearn.entities.User;
 
-import javax.validation.constraints.Email;
 import java.io.Serializable;
 
 public class UserDTO implements Serializable {

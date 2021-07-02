@@ -24,7 +24,7 @@ public class UserService implements UserDetailsService {
 
     @Transactional(readOnly = true)
     public UserDTO findById(Long id) {
-        authService.validateSelfOrAdming(id);
+        authService.validateSelfOrAdmin(id);
 
         Optional<User> userOptional = repository.findById(id);
         return userOptional
