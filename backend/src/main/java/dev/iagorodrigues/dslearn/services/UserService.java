@@ -19,10 +19,13 @@ import java.util.Optional;
 public class UserService implements UserDetailsService {
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
+    @Autowired private AuthService authService;
     @Autowired private UserRepository repository;
 
     @Transactional(readOnly = true)
     public UserDTO findById(Long id) {
+        authService.validateSelfOrAdming(id);
+
         Optional<User> userOptional = repository.findById(id);
         return userOptional
                 .map(UserDTO::new)

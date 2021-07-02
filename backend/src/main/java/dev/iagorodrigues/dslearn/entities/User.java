@@ -108,8 +108,6 @@ public class User implements UserDetails, Serializable {
         return getId().hashCode();
     }
 
-
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getAuthority()))
@@ -139,5 +137,9 @@ public class User implements UserDetails, Serializable {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public boolean hasRole(String roleName) {
+        return roles.stream().anyMatch(role -> role.getAuthority().equals(roleName));
     }
 }
