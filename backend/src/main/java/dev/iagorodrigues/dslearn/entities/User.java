@@ -8,9 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,11 +24,8 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-
     private String email;
-
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -34,20 +34,8 @@ public class User implements Serializable {
         inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        return getId().equals(user.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return getId().hashCode();
-    }
+    @OneToMany(mappedBy = "user")
+    private final List<Notification> notifications = new ArrayList<>();
 
     public User() {
     }
@@ -94,5 +82,24 @@ public class User implements Serializable {
 
     public Set<Role> getRoles() {
         return roles;
+    }
+
+    public List<Notification> getNotifications() {
+        return notifications;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        return getId().equals(user.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getId().hashCode();
     }
 }
