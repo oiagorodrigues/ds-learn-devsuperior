@@ -1,6 +1,6 @@
 package dev.iagorodrigues.dslearn.entities;
 
-import dev.iagorodrigues.dslearn.enums.DeliverStatus;
+import dev.iagorodrigues.dslearn.entities.enums.DeliverStatus;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
