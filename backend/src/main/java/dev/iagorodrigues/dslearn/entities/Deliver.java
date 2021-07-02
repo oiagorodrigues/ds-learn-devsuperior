@@ -58,32 +58,64 @@ public class Deliver implements Serializable {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getUri() {
         return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 
     public Instant getMoment() {
         return moment;
     }
 
+    public void setMoment(Instant moment) {
+        this.moment = moment;
+    }
+
     public DeliverStatus getStatus() {
         return status;
+    }
+
+    public void setStatus(DeliverStatus status) {
+        this.status = status;
     }
 
     public String getFeedback() {
         return feedback;
     }
 
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
+    }
+
     public Integer getCorrectCount() {
         return correctCount;
+    }
+
+    public void setCorrectCount(Integer correctCount) {
+        this.correctCount = correctCount;
     }
 
     public Lesson getLesson() {
         return lesson;
     }
 
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
+    }
+
     public Enrollment getEnrollment() {
         return enrollment;
+    }
+
+    public void setEnrollment(Enrollment enrollment) {
+        this.enrollment = enrollment;
     }
 
     @Override
