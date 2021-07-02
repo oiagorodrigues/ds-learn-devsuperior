@@ -1,9 +1,12 @@
 package dev.iagorodrigues.dslearn.controllers.exceptions;
 
+import dev.iagorodrigues.dslearn.errors.OAuthCustomError;
 import dev.iagorodrigues.dslearn.errors.StandardError;
 import dev.iagorodrigues.dslearn.errors.ValidationError;
 import dev.iagorodrigues.dslearn.services.exceptions.DatabaseException;
+import dev.iagorodrigues.dslearn.services.exceptions.ForbiddenException;
 import dev.iagorodrigues.dslearn.services.exceptions.ResourceNotFoundException;
+import dev.iagorodrigues.dslearn.services.exceptions.UnathorizedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -50,6 +53,24 @@ public class ResourceExceptionHandler {
             err.addError(fieldError.getField(), fieldError.getDefaultMessage());
         }
 
+        return ResponseEntity.status(status).body(err);
+    }
+
+    @ExceptionHandler(ForbiddenException.class)
+    public ResponseEntity<OAuthCustomError> forbiddenException(ForbiddenException exception,
+                                                               HttpServletRequest request) {
+
+        OAuthCustomError err = new OAuthCustomError("Forbidden", exception.getMessage());
+        HttpStatus status = HttpStatus.FORBIDDEN;
+        return ResponseEntity.status(status).body(err);
+    }
+
+    @ExceptionHandler(UnathorizedException.class)
+    public ResponseEntity<OAuthCustomError> unauthorizedException(UnathorizedException exception,
+                                                               HttpServletRequest request) {
+
+        OAuthCustomError err = new OAuthCustomError("Unathorized", exception.getMessage());
+        HttpStatus status = HttpStatus.UNAUTHORIZED;
         return ResponseEntity.status(status).body(err);
     }
 
