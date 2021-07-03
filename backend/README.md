@@ -1,13 +1,13 @@
 # DS Learn API
 
-# About the project
+## About the project
 
 DS Learn API is a project made in the 3º edition of the **DevSuperior Bootcamp** (BDS3.0). 
-Event organized buy [DevSuperior](https://devsuperior.com "DevSuperior website").
+Event organized by [DevSuperior](https://devsuperior.com "DevSuperior website").
 
 It delivers an endpoints to be consumed by a Course Platform application. **Frontend to be done yet**
 
-# Technologies used
+## Technologies used
 - Java
 - Spring Boot 2.4.4
 - JPA / Hibernate
@@ -17,9 +17,8 @@ It delivers an endpoints to be consumed by a Course Platform application. **Fron
 - JUnit
 - Mockito
 
-# How to execute the project
+## How to execute the project
 
-## Back end
 Requirements: Java 11
 
 ```bash
@@ -64,11 +63,11 @@ Recommended using [Intellij](https://www.jetbrains.com/pt-br/idea/), [STS](https
 
 ## TODO
 
-- [] Unit Tests
-- [] Integration Tests
-- [] Finish endpoints
+- [ ] Unit Tests
+- [ ] Integration Tests
+- [ ] Finish endpoints
 
-# Author
+## Author
 
 Iago Rodrigues Melo
 
